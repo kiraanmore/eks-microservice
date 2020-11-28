@@ -1,6 +1,7 @@
 version: 2.1
 
 orbs:
+  python: circleci/python@0.2.1
   aws-ecr: circleci/aws-ecr@6.7.0
   docker: circleci/docker@1.5.0
   python-lint: qventus/python-lint@0.0.6
@@ -14,9 +15,12 @@ workflows:
           dockerfiles: Dockerfile
   linting_python:
     jobs:
-      - python-lint:
-          lint:
-            working-directory: .
+      - run:
+          name: run lint
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            make lint
   build_and_push_image:
     jobs:
       - aws-ecr/build-and-push-image:
