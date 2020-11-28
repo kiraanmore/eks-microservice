@@ -13,10 +13,9 @@ workflows:
     jobs:
       - docker/hadolint:
           dockerfiles: Dockerfile
-  linting_python:
-    build:
-      jobs:
-        lint:
+  lint:
+    jobs:
+      - python-lint/lint:
           working-directory: .
   build_and_push_image:
     jobs:
