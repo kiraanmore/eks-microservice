@@ -14,7 +14,8 @@ workflows:
           dockerfiles: Dockerfile
   linting_python:
     jobs:
-      - pylint/lint
+      - pylint/lint:
+          working-directory: .
   build_and_push_image:
     jobs:
       - aws-ecr/build-and-push-image:
