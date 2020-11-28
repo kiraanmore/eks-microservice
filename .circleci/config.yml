@@ -13,10 +13,10 @@ workflows:
     jobs:
       - docker/hadolint:
           dockerfiles: Dockerfile
-  lint:
+  linting_python:
     jobs:
       - python-lint/lint:
-          working-directory: .
+          workspace-root: .
   build_and_push_image:
     jobs:
       - aws-ecr/build-and-push-image:
