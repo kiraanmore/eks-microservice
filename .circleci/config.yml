@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  python: circleci/python@0.2.1
+  python: chariot/python@0.0.1
   aws-ecr: circleci/aws-ecr@6.7.0
   docker: circleci/docker@1.5.0
   python-lint: qventus/python-lint@0.0.6
@@ -14,9 +14,10 @@ workflows:
       - docker/hadolint:
           dockerfiles: Dockerfile
   linting_python:
-    jobs:
-      - python-lint/lint:
-          checkout: false
+    - run:
+        name: run lint
+        command: |
+          pylint --disable=R,C,W1203,W1202 **.py
   build_and_push_image:
     jobs:
       - aws-ecr/build-and-push-image:
