@@ -14,13 +14,11 @@ workflows:
       - docker/hadolint:
           dockerfiles: Dockerfile
   linting_python:
-    jobs:
-      - run:
-          name: run lint
-          command: |
-            python3 -m venv venv
-            . venv/bin/activate
-            make lint
+    build:
+      jobs:
+      - pylint/lint
+          lint:
+            working-directory: .
   build_and_push_image:
     jobs:
       - aws-ecr/build-and-push-image:
