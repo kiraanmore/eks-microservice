@@ -16,9 +16,8 @@ workflows:
   linting_python:
     build:
       jobs:
-      - pylint/lint
-          lint:
-            working-directory: .
+        lint:
+          working-directory: .
   build_and_push_image:
     jobs:
       - aws-ecr/build-and-push-image:
