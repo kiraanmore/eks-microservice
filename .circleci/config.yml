@@ -16,6 +16,7 @@ workflows:
   linting_python:
     jobs:
       - python-lint/lint:
+          attach-workspace: true
   build_and_push_image:
     jobs:
       - aws-ecr/build-and-push-image:
