@@ -48,11 +48,12 @@ jobs:
 workflows:
   deployment:
     jobs:
-            #      - docker/hadolint:
-            #dockerfiles: Dockerfile
-            #- python-lint/lint:
-            #checkout: false
-            #requires: docker/hadolint
+      - docker/hadolint:
+          dockerfiles: Dockerfile
+      - python-lint/lint:
+            checkout: false
+            requires: 
+              - docker/hadolint
       - aws-ecr/build_and_push_image:
           name: build-and-push-image
           account-url: AWS_ECR_ACCOUNT_URL
@@ -63,7 +64,8 @@ workflows:
           dockerfile: Dockerfile
           path: .
           tag: ${CIRCLE_BUILD_NUM}
-          requires: python-lint/lint
+          requires: 
+            - python-lint/lint
       - deploy-application:
           cluster-name: eks-cluster
           aws-region: $AWS_REGION
