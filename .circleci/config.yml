@@ -42,7 +42,8 @@ jobs:
       - kubernetes/create-or-update-resource:
           resource-file-path: "microservice-app-deployment.yaml"
           get-rollout-status: true
-          #resource-name: deployment/microservice
+          namespace: microservice
+          resource-name: microservice
       - kubernetes/create-or-update-resource:
           resource-file-path: "service.yaml"
 workflows:
