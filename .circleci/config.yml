@@ -41,7 +41,7 @@ jobs:
           aws-region: << parameters.aws-region >>
       - kubernetes/create-or-update-resource:
           resource-file-path: "microservice-app-deployment.yaml"
-          get-rollout-status: true
+          #get-rollout-status: true
           namespace: microservice
           resource-name: microservice
       - kubernetes/create-or-update-resource:
