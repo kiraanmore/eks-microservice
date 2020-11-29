@@ -64,13 +64,13 @@ workflows:
           repo: microservice
           dockerfile: Dockerfile
           path: .
-          tag: ${CIRCLE_BUILD_NUM}
+          tag: latest
           requires: 
             - python-lint/lint
       - deploy-application:
           cluster-name: eks-cluster
           aws-region: $AWS_REGION
-          docker-image-name: "${AWS_ECR_ACCOUNT_URL}/microservice:${CIRCLE_BUILD_NUM}"
-          version-info: "${CIRCLE_BUILD_NUM}"
+          docker-image-name: "${AWS_ECR_ACCOUNT_URL}/microservice:latest"
+          version-info: "latest"
           requires:
             - build-and-push-image
