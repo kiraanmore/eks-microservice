@@ -48,11 +48,11 @@ jobs:
 workflows:
   deployment:
     jobs:
-      - docker/hadolint:
-          dockerfiles: Dockerfile
-      - python-lint/lint:
-          checkout: false
-          requires: docker/hadolint
+            #      - docker/hadolint:
+            #dockerfiles: Dockerfile
+            #- python-lint/lint:
+            #checkout: false
+            #requires: docker/hadolint
       - aws-ecr/build_and_push_image:
           name: build-and-push-image
           account-url: AWS_ECR_ACCOUNT_URL
