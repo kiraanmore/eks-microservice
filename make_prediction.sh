@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-PORT=8000
+PORT=80
 echo "Port: $PORT"
 
 # POST method predict
@@ -25,4 +25,4 @@ curl -d '{
    }
 }'\
      -H "Content-Type: application/json" \
-     -X POST http://localhost:$PORT/predict
+     -X POST http://a7f9ba779f07d4a9a85d74121c08843b-1133139366.us-west-2.elb.amazonaws.com:$PORT/predict
