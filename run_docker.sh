@@ -6,10 +6,12 @@
 # Build image and add a descriptive tag
 docker build -t microservice .
 
+docker tag microservice:latest 813213957333.dkr.ecr.us-west-2.amazonaws.com/microservice:latest
+
 # Step 2:
 # List docker images
 docker images
 
 # Step 3:
 # Run flask app
-docker run microservice -p 80:80 &
+docker run -p 80:80 microservice &
