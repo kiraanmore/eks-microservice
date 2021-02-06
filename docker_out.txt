@@ -1,3 +1,4 @@
+Docker output :
 root@ip-172-31-39-40:/home/ubuntu/eks-microservice# ./make_prediction.sh
 Port: 80
 [2020-11-30 19:36:14,019] INFO in app: JSON payload:
